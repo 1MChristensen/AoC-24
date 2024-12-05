@@ -1,0 +1,17 @@
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import Statevector
+
+circ = QuantumCircuit(3)
+
+circ.h(0)
+circ.h(1)
+
+#circ.x(2)
+#circ.h(2)
+#circ.mcx([0,1], 2)
+#circ.h(2)
+#circ.x(2)
+
+state = Statevector.from_instruction(circ)
+print(state.to_dict())
+print(circ)
