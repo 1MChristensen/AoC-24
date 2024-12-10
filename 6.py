@@ -1,12 +1,6 @@
 import numpy as np
 import re 
 
-#filename = '/home/matt/AOC/24/data/test'
-filename = '/home/matt/AOC/24/data/6.txt'
-
-with open(filename, 'r') as file:
-    data = file.read()
-
 lines = re.split('\n', data)
 
 array_data = np.array([list(line) for line in lines if line])
@@ -120,9 +114,12 @@ while inDomain:
         current_state[1] = '>'
         continue
 
+history_copy = history.copy()
+history_copy.pop(0)
+
 history = [h for i,h in enumerate(history) if h not in history[:i]]
 
-print(len(history))
+print(history_copy)
 
 ################################################################
 
@@ -134,7 +131,7 @@ save_map = array_data.copy()
 
 found_loops = 0
 
-for O in locations:
+for O in history_copy:
 
     current_state = save_state.copy()
     array_data = save_map.copy()
@@ -235,4 +232,4 @@ for O in locations:
 
     #print(history)
 
-print('Found loops', found_loops)
+print('Found loops', found_loops-1)
