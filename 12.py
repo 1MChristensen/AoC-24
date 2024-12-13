@@ -8,7 +8,7 @@ with open(filename, 'r') as file:
     data = file.read().split('\n')
 
 data = np.array([[s for s in string] for string in data])
-print(data)
+#print(data)
 
 # Find all the regions
 regions = {}
